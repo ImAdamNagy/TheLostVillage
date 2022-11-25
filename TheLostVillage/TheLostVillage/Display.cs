@@ -18,7 +18,7 @@ namespace TheLostVillage
         public string[] AviableCommands { get; set; }
         public Display()
         {
-            Console.SetWindowSize(SCREENWIDTH, SCREENHEIGHT);
+            Console.SetWindowSize(SCREENWIDTH+1, SCREENHEIGHT);
         }
 
         #region FormatHelpers
@@ -43,15 +43,29 @@ namespace TheLostVillage
         private string CreateBorder(string content)
         {
             string line = content;
-            line.Prepend('|'); //Waiting for fix
+            line = line.Insert(0, "|");
             line = string.Concat(line,'|');
             return line;
         }
         #endregion
         private void CreateCommandBar()
-        {
+        {            
             CommandBar.Add(Separator());
-            CommandBar.Add(CreateBorder(Spacers(SCREENWIDTH - 2)));
+            #region Center Align
+            string content = string.Join(" ", AviableCommands);
+            int length = content.Length;
+            int freespace = SCREENWIDTH - 2 - length;
+            if (freespace%2==0)
+            {
+                content = Spacers(freespace / 2) + content + Spacers(freespace / 2);
+            }
+            else
+            {
+                freespace++;
+                content = Spacers(freespace / 2) + content + Spacers(freespace / 2 - 1);
+            }
+            #endregion
+            CommandBar.Add(CreateBorder(content));
             CommandBar.Add(Separator());     
         }
 
