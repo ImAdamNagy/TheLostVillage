@@ -1,0 +1,8 @@
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\obj\Debug\TheLostVillage.csproj.AssemblyReference.cache
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\obj\Debug\TheLostVillage.csproj.SuggestedBindingRedirects.cache
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\obj\Debug\TheLostVillage.csproj.CoreCompileInputs.cache
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\bin\Debug\TheLostVillage.exe.config
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\bin\Debug\TheLostVillage.exe
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\bin\Debug\TheLostVillage.pdb
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\obj\Debug\TheLostVillage.exe
+C:\Users\kamil\Desktop\Feci\Projects\TheLostVillage\TheLostVillage\TheLostVillage\obj\Debug\TheLostVillage.pdb
