@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace TheLostVillage
         public string[] AviableCommands { get; set; }
         public Display()
         {
-            Console.SetWindowSize(SCREENWIDTH+1, SCREENHEIGHT);
+            Console.SetWindowSize(SCREENWIDTH+1, SCREENHEIGHT+1);
         }
 
         #region FormatHelpers
@@ -48,8 +49,11 @@ namespace TheLostVillage
             return line;
         }
         #endregion
-        private void CreateCommandBar()
-        {            
+        private void CreateCommandBar() //Uses 3 lines
+        {
+            string[] commands = new string[] { "alma", "körte" };
+            AviableCommands = commands;
+
             CommandBar.Add(Separator());
             #region Center Align
             string content = string.Join(" ", AviableCommands);
@@ -68,12 +72,33 @@ namespace TheLostVillage
             CommandBar.Add(CreateBorder(content));
             CommandBar.Add(Separator());     
         }
+        private void CreateStatBar()
+        {
+            string[] stats = new string[] { "Eletero: 100", "Level: 5", "Name: Keldron", "Dialogue: ?", "Strengt: 10" };
+            const int STATWIDTH = 15;
+            StatBar.Add(CreateBorder(Spacers(STATWIDTH-2)));
+            foreach (var item in stats)
+            {
+                string statline = item + Spacers(STATWIDTH-item.Length-2);
+                StatBar.Add(CreateBorder(statline));
+                StatBar.Add(CreateBorder(Spacers(STATWIDTH - 2))); //Leaving an empty line between stats
+            }
+
+            int remaininglines = SCREENHEIGHT - 3 - StatBar.Count-1; //max-commandbar-stats-bottom separator line
+            for (int i = 0; i < remaininglines; i++)
+            {
+                StatBar.Add(CreateBorder(Spacers(STATWIDTH - 2)));
+            }
+            StatBar.Add(Separator());
+
+        }
 
         private void Assembly()
         {
             CreateCommandBar();
-
+            CreateStatBar();
             CommandBar.ForEach(x => FinalScreen.Add(x));
+            StatBar.ForEach(x => FinalScreen.Add(x));
         }
 
         public void Screen()
