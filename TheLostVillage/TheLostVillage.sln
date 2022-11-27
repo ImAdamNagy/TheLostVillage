@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32922.545
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheLostVillage", "TheLostVillage\TheLostVillage.csproj", "{85AD426C-A36C-4069-980B-6849AEE8FAAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheLostVillageTests", "TheLostVillageTests\TheLostVillageTests.csproj", "{C81D367D-42A2-4D22-8D19-81B64DA81532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{85AD426C-A36C-4069-980B-6849AEE8FAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85AD426C-A36C-4069-980B-6849AEE8FAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85AD426C-A36C-4069-980B-6849AEE8FAAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81D367D-42A2-4D22-8D19-81B64DA81532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81D367D-42A2-4D22-8D19-81B64DA81532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81D367D-42A2-4D22-8D19-81B64DA81532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81D367D-42A2-4D22-8D19-81B64DA81532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
