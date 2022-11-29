@@ -10,6 +10,8 @@ namespace TheLostVillage
     {
         static void Main(string[] args)
         {
+            GameStart game = new GameStart();
+            game.Run();
         }
     }
 }
