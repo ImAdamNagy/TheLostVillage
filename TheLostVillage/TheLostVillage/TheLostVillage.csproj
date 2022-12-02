@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="GameStart.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="Minigame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

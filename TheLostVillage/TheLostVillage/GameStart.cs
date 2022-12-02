@@ -30,5 +30,12 @@ namespace TheLostVillage
             Menu menu = new Menu(title, options);
             int selected = menu.Run();
         }
+        private void MinigameStart()
+        {
+            Minigame minigame = new Minigame();
+            minigame.ShuffleTheLettersOfTheWord();
+            minigame.GuessAttempts();
+            Console.ReadKey();
+        }
     }
 }
