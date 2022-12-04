@@ -8,9 +8,38 @@ namespace TheLostVillage
 {
     public class Player : Character
     {
+        public int Level { get; set; }
+        public int Experience { get; set; }
         public Player(string name) : base(name)
         {
+            Name = name;
+            Level = 1;
+            Experience = 0;
+            MaxHealth = 5;
+            Health = MaxHealth;
+            Strength = 2;
+            Armor = 1;
 
+            Dialogue = "I'm alive!";
+        }
+
+        public void GainExperience(int experience)
+        {
+            Experience += experience;
+            while (Experience >= Level * 10)
+            {
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            Experience -= Level * 10;
+            Level++;
+            MaxHealth += 5;
+            Health = MaxHealth;
+            Strength += 2;
+            Armor += 1;
         }
     }
 }
