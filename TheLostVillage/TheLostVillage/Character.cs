@@ -41,27 +41,12 @@ namespace TheLostVillage
             IsAlive = true;
             Name = name;
             Level = 1;
-            AdjustToLevel();
-            
-            Dialogue = "I'm alive!";
-        }
-
-        public void AdjustToLevel()
-        {
-            maxhealth = Level * 5;
+            maxhealth = 5;
             Health = maxhealth;
-            Strength = Level;
-            Armor = (int)(Level / 2);
-        }
+            Strength = 2;
+            Armor = 1;
 
-        public int Attack()
-        {
-            return Strength;
-        }
-
-        public int Defend()
-        {
-            return Armor;
+            Dialogue = "I'm alive!";
         }
 
         public void TakeDamage(int damage)
@@ -85,7 +70,10 @@ namespace TheLostVillage
         {
             Experience -= Level * 10;
             Level++;
-            AdjustToLevel();
+            maxhealth += 5;
+            Health = maxhealth;
+            Strength += 2;
+            Armor += 1;
         }
     }
 }
