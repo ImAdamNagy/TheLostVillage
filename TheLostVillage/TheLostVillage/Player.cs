@@ -8,6 +8,17 @@ namespace TheLostVillage
 {
     public class Player : Character
     {
+        public string[] stats
+        {
+            get => new string[] {
+            $"Name: {Name}",
+            $"Level: {Level}",
+            $"Health: {Health}/{MaxHealth}",
+            $"Strength: {Strength}",
+            $"Armor: {Armor}",
+            $"Dialogue: {Dialogue}"
+            };
+        }
         public int Level { get; set; }
         public int Experience { get; set; }
         public Player(string name) : base(name)
@@ -18,7 +29,7 @@ namespace TheLostVillage
             MaxHealth = 5;
             Health = MaxHealth;
             Strength = 2;
-            Armor = 1;
+            Armor = 0;
 
             Dialogue = "I'm alive!";
         }
@@ -35,11 +46,11 @@ namespace TheLostVillage
         public void LevelUp()
         {
             Experience -= Level * 10;
-            Level++;
+            ++Level;
             MaxHealth += 5;
             Health = MaxHealth;
             Strength += 2;
-            Armor += 1;
+            ++Armor;
         }
     }
 }

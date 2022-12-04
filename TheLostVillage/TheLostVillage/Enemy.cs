@@ -6,19 +6,30 @@ using System.Threading.Tasks;
 
 namespace TheLostVillage
 {
-    class Enemy : Character
+    public class Enemy : Character
     {
-        public int Exp { get; private set; }
+        public string[] stats
+        {
+            get => new string[] {
+            $"Name: {Name}",
+            $"Health: {Health}/{MaxHealth}",
+            $"Strength: {Strength}",
+            $"Armor: {Armor}",
+            $"Dialogue: {Dialogue}"
+            };
+        }
+        public int Exp { get => Difficulty * 5; }
         public string Loot { get; private set; }
-        public Enemy(string name, int exp, string loot) : base(name)
+        public int Difficulty { get; private set; }
+        public Enemy(string name, int difficulty, string loot) : base(name)
         {
             Name = name;
-            Exp = exp;
+            Difficulty = difficulty;
             Loot = loot;
-            MaxHealth = 5;
+            MaxHealth = difficulty * 3;
             Health = MaxHealth;
-            Strength = 2;
-            Armor = 1;
+            Strength = difficulty * 1;
+            Armor = (int)(difficulty * 0.5);
 
             Dialogue = "I'm alive and biting!";
         }
