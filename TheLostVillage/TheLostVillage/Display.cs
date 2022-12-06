@@ -14,9 +14,10 @@ namespace TheLostVillage
         private List<string> FinalScreen = new List<string>();
         private List<string> CommandBar = new List<string>();
         private List<string> StatBar = new List<string>();
-        private List<string> GameScreen = new List<string>();
-
+        private List<string> StatandMap = new List<string>();
+        
         public string[] AviableCommands { get; set; }
+        public string[] Map { get; set; }
         public Display()
         {
             Console.SetWindowSize(SCREENWIDTH+1, SCREENHEIGHT+1);
@@ -51,7 +52,7 @@ namespace TheLostVillage
         #endregion
         private void CreateCommandBar() //Uses 3 lines
         {
-            string[] commands = new string[] { "alma", "körte" };
+            string[] commands = new string[] { "alma", "körte","asd", "láma","ló", "kerekesszék" };
             AviableCommands = commands;
 
             CommandBar.Add(Separator());
@@ -74,7 +75,7 @@ namespace TheLostVillage
         }
         private void CreateStatBar()
         {
-            string[] stats = new string[] { "Eletero: 100", "Level: 5", "Name: Keldron", "Dialogue: ?", "Strengt: 10" };
+            string[] stats = new string[] { "Eletero: 100", "Level: 5", "Name: Keldron", "Dialogue: ?", "Strengt: 10"};
             const int STATWIDTH = 15;
             StatBar.Add(CreateBorder(Spacers(STATWIDTH-2)));
             foreach (var item in stats)
@@ -93,18 +94,36 @@ namespace TheLostVillage
 
         }
 
+        private void MapMerge()
+        {
+            string[] helper = new string[StatBar.Count];
+            for (int i = 0; i < StatBar.Count-1; i++)
+            {
+                helper[i] = $"{Spacers(i)}{i}";
+            }
+            Map = helper;
+
+
+            for (int i = 0; i < StatBar.Count; i++)
+            {
+                StatandMap.Add(StatBar[i] + Map[i]);
+            }
+        }
+
         private void Assembly()
         {
             CreateCommandBar();
             CreateStatBar();
+            MapMerge();
             CommandBar.ForEach(x => FinalScreen.Add(x));
-            StatBar.ForEach(x => FinalScreen.Add(x));
+            StatandMap.ForEach(x => FinalScreen.Add(x));
         }
 
         public void Screen()
         {
             Assembly();
             FinalScreen.ForEach(x => Console.WriteLine(x));
+            Console.WriteLine(SCREENWIDTH - StatBar[5].Count());
         }
         
     }
