@@ -10,6 +10,7 @@ namespace TheLostVillage
     {
         public void Run()
         {
+            MinigameStart();
             MainMenu();
         }
 
