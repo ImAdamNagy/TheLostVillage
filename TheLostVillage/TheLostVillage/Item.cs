@@ -12,6 +12,8 @@ namespace TheLostVillage
         private string Name;
         private int Count;
         private bool Consumable;
+        private int attack_damadge;
+        private int Armor;
         private int Value;
 
 
@@ -21,7 +23,9 @@ namespace TheLostVillage
             Name = seged[0];
             Count = int.Parse( seged[1]);
             Consumable = bool.Parse( seged[2]);
-            Value =int.Parse( seged[3]);
+            attack_damadge = int.Parse(seged[3]);
+            Armor = int.Parse(seged[4]);
+            Value =int.Parse( seged[5]);
         }
         //majd másik fáljba  kell a listafeltoltes() metódus
         //public void listafeltoltes()

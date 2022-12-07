@@ -1,5 +1,5 @@
-Flaming Sword;1;false;40;0
-Heavy hat;1;False;0;35
-potion;1;true;0;0;
-potion;1;true;0;0
-potion;1;true;0;0
+Flaming Sword;1;false;40;0;3500
+Heavy hat;1;False;0;35;3000
+potion;1;true;0;0;500
+potion;1;true;0;0;500
+potion;1;true;0;0;500
