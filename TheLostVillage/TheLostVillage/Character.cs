@@ -6,62 +6,42 @@ using System.Threading.Tasks;
 
 namespace TheLostVillage
 {
-     public class Character
+     public abstract class Character
     {
-        public string Name { get; private set; }
-        private int maxhealth;
+        public string Name { get; set; }
+        public string Dialogue { get; set; }
+        public int Strength { get; set; }
+        public int Armor { get; set; }
+        public int MaxHealth { get; set; }
+        public bool IsAlive { get => Health > 0; }
+
         private int health;
         public int Health
         {
             get { return health; }
             set 
             { 
-                if (value <= maxhealth && value >= 0 ) {
+                if (value <= MaxHealth && value >= 0 ) {
                     health = value;
                 } 
-                else if (value > maxhealth) {
-                    health = maxhealth;
+                else if (value > MaxHealth) {
+                    health = MaxHealth;
                 } 
                 else {
                     health = 0;
-                    IsAlive = false;
                 }
             }
         }
 
-        public int Level { get; private set; }
-        public int Experience { get; private set; }
-        public string Dialogue { get; private set; }
-        public int Strength { get; private set; }
-        public int Armor { get; private set; }
-        public bool IsAlive { get; private set; }
-
         public Character (string name)
         {
-            IsAlive = true;
             Name = name;
-            Level = 1;
-            AdjustToLevel();
-            
-            Dialogue = "I'm alive!";
-        }
+            MaxHealth = 5;
+            Health = MaxHealth;
+            Strength = 2;
+            Armor = 1;
 
-        public void AdjustToLevel()
-        {
-            maxhealth = Level * 5;
-            Health = maxhealth;
-            Strength = Level;
-            Armor = (int)(Level / 2);
-        }
-
-        public int Attack()
-        {
-            return Strength;
-        }
-
-        public int Defend()
-        {
-            return Armor;
+            Dialogue = "I'm alive and gonna be a Dragon Slayer!";
         }
 
         public void TakeDamage(int damage)
@@ -70,22 +50,6 @@ namespace TheLostVillage
             {
                 Health -= damage;
             }
-        }
-
-        public void GainExperience(int experience)
-        {
-            Experience += experience;
-            while (Experience >= Level * 10)
-            {
-                LevelUp();
-            }
-        }
-
-        public void LevelUp()
-        {
-            Experience -= Level * 10;
-            Level++;
-            AdjustToLevel();
         }
     }
 }
