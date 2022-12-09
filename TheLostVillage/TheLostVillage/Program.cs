@@ -10,10 +10,6 @@ namespace TheLostVillage
     {
         static void Main(string[] args)
         {
-            Display display = new Display();
-
-            display.Screen();
-           Console.ReadKey();
         }
     }
 }
