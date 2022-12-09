@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="GameStart.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Minigame.cs" />
@@ -52,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Items.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
