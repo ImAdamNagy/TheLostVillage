@@ -7,15 +7,21 @@ using System.IO;
 
 namespace TheLostVillage
 {
-    class Item
+    public class Item
     {
-        private string Name;
-        private int Count;
-        private bool Consumable;
-        private int attack_damadge;
-        private int Armor;
-        private int Value;
+        private string name;
+        private int count;
+        private bool consumable;
+        private int attack_damage;
+        private int armor;
+        private int value;
 
+        public string Name { get => name; set => name = value; }
+        public int Count { get=>count; set => count = value; }
+        public bool Consumable { get => consumable; set => consumable = value; }
+        public int Attack_Damage { get => attack_damage; set => attack_damage = value; }
+        public int Armor { get => armor; set => armor = value; }
+        public int Value { get => value ; set => this.value = value; }
 
         public Item(string adtsor)
         {
@@ -23,18 +29,10 @@ namespace TheLostVillage
             Name = seged[0];
             Count = int.Parse( seged[1]);
             Consumable = bool.Parse( seged[2]);
-            attack_damadge = int.Parse(seged[3]);
+            attack_damage = int.Parse(seged[3]);
             Armor = int.Parse(seged[4]);
             Value =int.Parse( seged[5]);
         }
-        //majd másik fáljba  kell a listafeltoltes() metódus
-        //public void listafeltoltes()
-        //{
-        //    List<Item> items = new List<Item>();
-        //    foreach (var item in File.ReadAllLines("items.txt"))
-        //    {
-        //        items.Add(new Item(item));
-        //    }
-        //}
+        
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TheLostVillage
 {
@@ -15,12 +16,12 @@ namespace TheLostVillage
             $"Level: {Level}",
             $"Health: {Health}/{MaxHealth}",
             $"Strength: {Strength}",
-            $"Armor: {Armor}",
-            $"Dialogue: {Dialogue}"
+            $"Armor: {Armor}"
             };
         }
         public int Level { get; set; }
         public int Experience { get; set; }
+        public List<Item> Inventory { get; set; }
         public Player(string name) : base(name)
         {
             Name = name;
@@ -32,6 +33,15 @@ namespace TheLostVillage
             Armor = 0;
 
             Dialogue = "I'm alive!";
+
+
+            #region Starter Inventory
+            Inventory = new List<Item>();
+            foreach(var item in File.ReadAllLines("Items.txt"))
+            {
+                Inventory.Add(new Item(item));
+            }
+            #endregion
         }
 
         public void GainExperience(int experience)

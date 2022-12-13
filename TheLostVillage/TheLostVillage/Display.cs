@@ -11,25 +11,18 @@ namespace TheLostVillage
     {
         private const int SCREENWIDTH = 160;
         private const int SCREENHEIGHT = 45;
-        private const int STATWIDTH = 15;
+        private const int STATWIDTH = 17;
         private List<string> FinalScreen = new List<string>();
         private List<string> CommandBar = new List<string>();
         private List<string> StatBar = new List<string>();
         private List<string> StatAndGameArea = new List<string>();
         private List<string> Inventory = new List<string>();
 
-        public struct Item
-        {
-            public string Name;
-            public int Darab;
-            public bool Consumable;
-            public int Attack;
-            public int Defense;
-        }
 
         public string[] AviableCommands { get; set; }
         public string[] Map { get; set; }
-        public Item OwnedItems { get; set; }
+        public List<Item> OwnedItems { get; set; }
+        public string[] Stats { get; set; }
         public Display()
         {
             Console.SetWindowSize(SCREENWIDTH+1, SCREENHEIGHT+1);
@@ -94,7 +87,7 @@ namespace TheLostVillage
 
         private void CreateStatBar()
         {
-            string[] stats = new string[] { "Eletero: 100", "Level: 5", "Name: Keldron", "Dialogue: ?", "Strengt: 10"};
+            string[] stats = Stats;
             
             StatBar.Add(CreateBorder(Spacers(STATWIDTH-2)));
             foreach (var item in stats)
@@ -131,20 +124,14 @@ namespace TheLostVillage
 
         private void ShowInventory()
         {
-            Item item1 = new Item();
-            item1.Name = "asd";
-            item1.Darab = 2;
-            item1.Consumable = false;
-            item1.Attack = 33;
-            item1.Defense = 50;
-
-            OwnedItems = item1;
-            
-            Inventory.Add(""); 
-            string tab = Spacers(5);
-            string itemline = $"{item1.Name}{tab}{item1.Darab}x{tab}{item1.Consumable}{tab}{item1.Attack}{tab}{item1.Defense}";
-            Inventory.Add(AlignCenter(itemline).Remove(0,STATWIDTH));
-            Inventory.Add("");
+            foreach (var item in OwnedItems)
+            {
+                Inventory.Add("");
+                string tab = Spacers(5);
+                string itemline = $"{item.Name}{tab}{item.Count}x{tab}{item.Consumable}{tab}{item.Attack_Damage}{tab}{item.Armor}{tab}{item.Value}";
+                Inventory.Add(AlignCenter(itemline).Remove(0, STATWIDTH));
+                Inventory.Add("");
+            }            
             
             for (int i = 0; i < Inventory.Count; i++)
             {
