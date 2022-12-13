@@ -62,7 +62,7 @@ namespace TheLostVillage
             return line;
         }
 
-        private string AlignCenter(string content)
+        public string AlignCenter(string content)
         {
             int length = content.Length;
             int freespace = SCREENWIDTH - 2 - length;

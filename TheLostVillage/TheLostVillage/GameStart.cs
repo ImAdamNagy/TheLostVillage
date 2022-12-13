@@ -10,11 +10,8 @@ namespace TheLostVillage
     {
         public void Run()
         {
-            MinigameStart();
             MainMenu();
         }
-
-
         private void MainMenu()
         {
             string title = @"                   (                                                  
@@ -26,7 +23,7 @@ namespace TheLostVillage
   | | | ' \/ -_)  | |__/ _ (_-<  _|   \ V /  | | || / _` / _` |/ -_)  
   |_| |_||_\___|  |____\___/__/\__|    \_/   |_|_||_\__,_\__, |\___|  
                                                          |___/        ";
-
+            
             string[] options = { "Play", "About the game", "Exit" };
             Menu menu = new Menu(title, options);
             int selected = menu.Run();

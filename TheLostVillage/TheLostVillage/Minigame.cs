@@ -10,7 +10,7 @@ namespace TheLostVillage
     class Minigame
     {
         Random Shuffle = new Random();
-        static string SecretWord_1 = "Confidence is the key";
+        static string SecretWord_1 = "Bármit írok";
 
         List<string> words = new List<string>();
 

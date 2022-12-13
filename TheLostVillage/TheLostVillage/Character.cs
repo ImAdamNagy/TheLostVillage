@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 namespace TheLostVillage
 {
      public abstract class Character
-    {
+     {
         public string Name { get; set; }
-        public string Dialogue { get; set; }
         public int Strength { get; set; }
         public int Armor { get; set; }
         public int MaxHealth { get; set; }
@@ -40,8 +39,6 @@ namespace TheLostVillage
             Health = MaxHealth;
             Strength = 2;
             Armor = 1;
-
-            Dialogue = "I'm alive and gonna be a Dragon Slayer!";
         }
 
         public void TakeDamage(int damage)

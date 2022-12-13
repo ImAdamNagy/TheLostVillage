@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace TheLostVillage
 {
-    internal class Program
+    class ActionHandler
     {
-        static void Main(string[] args)
-        {
-            GameStart game = new GameStart();
-            game.Run();
-        }
+        static string name = "asd";
+        Player player = new Player(name);
     }
 }
