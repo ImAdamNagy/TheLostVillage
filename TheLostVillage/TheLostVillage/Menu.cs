@@ -79,7 +79,7 @@ namespace TheLostVillage
                         Index = 0;
                     }
                 }
-            } while (keyPressed != ConsoleKey.Escape);
+            } while (keyPressed != ConsoleKey.Enter);
 
             return Index;
         }

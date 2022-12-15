@@ -8,7 +8,20 @@ namespace TheLostVillage
 {
     class ActionHandler
     {
-        static string name = "asd";
-        Player player = new Player(name);
+        Display display = new Display();
+        public void CallDisplay()
+        {
+                display.Screen();
+        }
+        public void InventoryCall()
+        {
+            ConsoleKey inputkey;
+            ConsoleKeyInfo keyinfo = Console.ReadKey(true);
+            inputkey = keyinfo.Key;
+            if (inputkey == ConsoleKey.V)
+            {
+                display.ShowInventory();
+            }
+        }
     }
 }

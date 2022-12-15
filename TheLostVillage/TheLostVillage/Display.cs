@@ -129,7 +129,7 @@ namespace TheLostVillage
             }
         }
 
-        private void ShowInventory()
+        public void ShowInventory()
         {
             Item item1 = new Item();
             item1.Name = "asd";
