@@ -19,13 +19,15 @@ namespace TheLostVillage
             Index = 0;
         }
 
-        private void DisplayTheOptions()
+        private void DisplayTheOptionsAndTheTitle()
         {
-            int screenWidth = Console.WindowWidth;
+            Display DisplayHelper = new Display();
+            int firstLineWidth = Title.Split('\n')[0].Length;
+            int screenWidth = firstLineWidth;
+            Console.WindowWidth = firstLineWidth;
             Console.WriteLine(Title);
             for (int i = 0; i < Options.Length; i++)
             {
-
                 string markerStart;
                 string markerEnd;
 
@@ -46,14 +48,18 @@ namespace TheLostVillage
             }
             Console.ResetColor();
         }
-
+        public string DisplayAboutTheGame()
+        {
+            string info = "About the game";
+            return info;
+        }
         public int Run()
         {
             ConsoleKey keyPressed;
             do
             {
                 Console.Clear();
-                DisplayTheOptions();
+                DisplayTheOptionsAndTheTitle();
                 ConsoleKeyInfo Info = Console.ReadKey(true);
                 keyPressed = Info.Key;
 
@@ -73,10 +79,11 @@ namespace TheLostVillage
                         Index = 0;
                     }
                 }
-            } while (keyPressed != ConsoleKey.Escape);
+            } while (keyPressed != ConsoleKey.Enter);
 
             return Index;
         }
+        
     }
 }
 

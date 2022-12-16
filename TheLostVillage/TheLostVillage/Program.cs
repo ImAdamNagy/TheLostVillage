@@ -10,16 +10,8 @@ namespace TheLostVillage
     {
         static void Main(string[] args)
         {
-            Display main = new Display();
-            Player jatekos = new Player("Keldron");
-
-
-            main.OwnedItems = jatekos.Inventory;
-            main.Stats = jatekos.stats;
-
-            main.Screen();
-
-            Console.ReadKey();
+            GameStart game = new GameStart();
+            game.Run();
         }
     }
 }

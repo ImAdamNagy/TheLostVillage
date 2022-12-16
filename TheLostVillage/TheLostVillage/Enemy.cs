@@ -14,24 +14,18 @@ namespace TheLostVillage
             $"Name: {Name}",
             $"Health: {Health}/{MaxHealth}",
             $"Strength: {Strength}",
-            $"Armor: {Armor}",
-            $"Dialogue: {Dialogue}"
+            $"Armor: {Armor}"
             };
         }
-        public int Exp { get => Difficulty * 5; }
-        public string Loot { get; private set; }
-        public int Difficulty { get; private set; }
-        public Enemy(string name, int difficulty, string loot) : base(name)
+        public Item Loot { get; private set; }
+        public Enemy(string name, int health, int strength, int armor, Item loot) : base(name)
         {
             Name = name;
-            Difficulty = difficulty;
+            Strength = strength;
             Loot = loot;
-            MaxHealth = difficulty * 3;
+            MaxHealth = health;
             Health = MaxHealth;
-            Strength = difficulty * 1;
-            Armor = (int)(difficulty * 0.5);
-
-            Dialogue = "I'm alive and biting!";
+            Armor = armor;
         }
     }
 }
