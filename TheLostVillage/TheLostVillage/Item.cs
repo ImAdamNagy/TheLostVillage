@@ -7,13 +7,13 @@ using System.IO;
 
 namespace TheLostVillage
 {
-    class Item
+    public class Item
     {
-        private string Name;
-        private int Count;
-        private bool Consumable;
-        private int attack_damadge;
-        private int Armor;
+        public string Name;
+        public int Count;
+        public bool Consumable;
+        public int attack_damadge;
+        public int Armor;
         private int Value;
 
 

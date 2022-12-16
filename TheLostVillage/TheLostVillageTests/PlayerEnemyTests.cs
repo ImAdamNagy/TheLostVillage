@@ -11,13 +11,15 @@ namespace TheLostVillageTests
         Enemy rat;
         Enemy eagle;
         Enemy dragon;
+        Item potion;
 
         public void Initialise()
         {
+            potion = new Item("potion;1;true;0;0;500");
             player = new Player("Flora");
-            rat = new Enemy("Rattling Rat", 1, "whiskers");
-            eagle = new Enemy("Eager Eagle", 10, "feathers");
-            dragon = new Enemy("Dangerous Dragon", 100, "peace");
+            rat = new Enemy("Rattling Rat",10,2,0, potion);
+            eagle = new Enemy("Eager Eagle",25,5, 3, potion);
+            dragon = new Enemy("Dangerous Dragon", 300,30,10, potion);
         }
 
         [TestMethod()]
@@ -25,8 +27,10 @@ namespace TheLostVillageTests
         {
             Initialise();
             Assert.AreEqual(player.Name, "Flora");
-            Assert.AreEqual(dragon.Difficulty, 100);
-            Assert.AreEqual(rat.Loot, "whiskers");
+            Assert.AreEqual(dragon.Health, 300);
+            Assert.AreEqual(dragon.Strength, 30);
+            Assert.AreEqual(dragon.Armor, 10);
+            Assert.AreEqual(rat.Loot, potion);
             Assert.AreEqual(eagle.Name, "Eager Eagle");
         }
 
@@ -36,7 +40,7 @@ namespace TheLostVillageTests
             Initialise();
             Assert.AreEqual(player.Name, "Flora");
 
-            player.TakeDamage(rat.Strength - player.Armor);
+            rat.Attack(player);
             Assert.AreNotEqual(player.Health, player.MaxHealth);
 
             bool playersTurn = true;
@@ -44,28 +48,24 @@ namespace TheLostVillageTests
             {
                 if (playersTurn)
                 {
-                    Assert.AreEqual(player.Strength - rat.Armor, 2);
-                    rat.TakeDamage(player.Strength - rat.Armor);
+                    player.Attack(rat);
                 }
                 else
                 {
-                    Assert.AreEqual(rat.Strength - player.Armor, 1);
-                    player.TakeDamage(rat.Strength - player.Armor);
+                    rat.Attack(player);
                 }
                 playersTurn = !playersTurn;
             }
             Assert.AreEqual(rat.Health, 0);
-            Assert.AreEqual(player.Health, 3);
+            Assert.AreEqual(player.Health, 12);
+            Assert.IsTrue(player.IsAlive);
 
-            player.GainExperience(rat.Exp * 2);
-            Assert.AreEqual(player.Health, 10);
-            Assert.AreEqual(player.Level, 2);
-            Assert.AreEqual(player.Experience, 0);
-
-            player.GainExperience(100000);
-            Assert.AreEqual(player.Health, 705);
-            Assert.AreEqual(player.Level, 141);
-            Assert.AreEqual(player.Experience, 1310);
+            if (player.IsAlive)
+            {
+                player.LevelUp();
+                Assert.AreEqual(player.Health, 25);
+                Assert.AreEqual(player.Level, 2);
+            }
         }
     }
 }

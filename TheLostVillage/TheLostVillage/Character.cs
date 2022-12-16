@@ -11,6 +11,7 @@ namespace TheLostVillage
         public string Name { get; set; }
         public int Strength { get; set; }
         public int Armor { get; set; }
+        public bool defending { get; set; }
         public int MaxHealth { get; set; }
         public bool IsAlive { get => Health > 0; }
 
@@ -41,12 +42,15 @@ namespace TheLostVillage
             Armor = 1;
         }
 
-        public void TakeDamage(int damage)
+        private void TakeDamage(int damage)
         {
-            if (damage > 0)
-            {
-                Health -= damage;
-            }
+            int defense = defending ? Armor * 2 : Armor;
+             Health -= damage - defense;
+        }
+
+        public void Attack(Character c)
+        {
+            c.TakeDamage(Strength);
         }
     }
 }

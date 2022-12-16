@@ -17,8 +17,8 @@ namespace TheLostVillage
             $"Armor: {Armor}"
             };
         }
-        public string Loot { get; private set; }
-        public Enemy(string name, int health, int strength, int armor, string loot) : base(name)
+        public Item Loot { get; private set; }
+        public Enemy(string name, int health, int strength, int armor, Item loot) : base(name)
         {
             Name = name;
             Strength = strength;
