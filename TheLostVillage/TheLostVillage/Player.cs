@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TheLostVillage
 {
@@ -19,7 +20,8 @@ namespace TheLostVillage
             };
         }
         public int Level { get; private set; }
-        public Dictionary<string,Item> Inventory { get; set; } //ideiglenes
+        public int Experience { get; set; }
+        public List<Item> Inventory { get; set; }
         public Player(string name) : base(name)
         {
             Name = name;
@@ -33,6 +35,16 @@ namespace TheLostVillage
             Inventory.Add(potions.Name, potions);
         }
 
+            Dialogue = "I'm alive!";
+
+
+            #region Starter Inventory
+            Inventory = new List<Item>();
+            foreach(var item in File.ReadAllLines("Items.txt"))
+            {
+                Inventory.Add(new Item(item));
+            }
+            #endregion
         public void LevelUp()
         {
             ++Level;
