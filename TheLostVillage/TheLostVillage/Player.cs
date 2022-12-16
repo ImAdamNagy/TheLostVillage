@@ -30,21 +30,17 @@ namespace TheLostVillage
             Health = MaxHealth;
             Strength = 4;
             Armor = 1;
-            Inventory = new Dictionary<string, Item>();
-            Item potions = new Item("potion;3;true;0;0;500"); // ideiglenes
-            Inventory.Add(potions.Name, potions);
-        }
-
-            Dialogue = "I'm alive!";
-
-
             #region Starter Inventory
             Inventory = new List<Item>();
-            foreach(var item in File.ReadAllLines("Items.txt"))
+            /*foreach (var item in File.ReadAllLines("Items.txt"))
             {
                 Inventory.Add(new Item(item));
-            }
+            }*/
             #endregion
+            Item potions = new Item("potion;3;true;0;0;500"); // ideiglenes
+            Inventory.Add(potions);
+        }
+            
         public void LevelUp()
         {
             ++Level;
@@ -56,26 +52,26 @@ namespace TheLostVillage
 
         public void UsePotion()
         {
-            if (Inventory.ContainsKey("potion") && Inventory["potion"].Count > 0)
+            if (Inventory.Exists(x => x.Name == "potion" && x.Count > 0))
             {
                 Health += 100;
-                Inventory["potion"].Count--;
+                Inventory.Where(x => x.Name == "potion").FirstOrDefault().Count++;
             }
         }
         public void AddLoot(Item loot)
         {
-            if (Inventory.ContainsKey(loot.Name))
+            if (Inventory.Exists(x => x.Name == loot.Name))
             {
-                Inventory[loot.Name].Count++;
+                Inventory.Where(x => x.Name == loot.Name).FirstOrDefault().Count++;
             }
             else
             {
-                Inventory.Add(loot.Name, loot);
+                Inventory.Add(loot);
             }
 
             if (!loot.Consumable)
             {
-                Strength += loot.attack_damadge;
+                Strength += loot.Attack_Damage;
                 Armor += loot.Armor;
             }
         }

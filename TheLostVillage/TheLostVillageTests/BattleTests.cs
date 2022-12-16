@@ -42,7 +42,7 @@ namespace TheLostVillage.Tests
             Assert.IsFalse(lavadog.IsAlive);
             Assert.IsTrue(flora.IsAlive);
             Assert.AreEqual(flora.Level, 2);
-            Assert.AreEqual(flora.Inventory[lavadog.Loot.Name].Count, 3);
+            Assert.AreEqual(flora.Inventory.Where(x => x.Name == potion.Name).FirstOrDefault().Count, 3);
             Assert.AreEqual(firstbattle.player, flora);
             Assert.AreEqual(flora.Level, 2);
         }
