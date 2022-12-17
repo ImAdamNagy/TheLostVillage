@@ -32,12 +32,7 @@ namespace TheLostVillage
             Strength = 4;
             Armor = 1;
             Inventory = new List<Item>();
-            #region Starter Inventory
-            /*foreach (var item in File.ReadAllLines("Items.txt"))
-            {
-                Inventory.Add(new Item(item));
-            }
-            #endregion
+            
             Potions = new Item("potion;3;true;0;0;500"); // ideiglenes
             Inventory.Add(Potions);
         }
