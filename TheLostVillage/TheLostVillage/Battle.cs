@@ -50,8 +50,7 @@ namespace TheLostVillage
                 case "D":
                     player.defending = true;
                     break;
-                case "P": //should be disabled if potion count is 0
-                case "I": //use item/potion
+                case "P":
                     player.UsePotion();
                     break;
             }
