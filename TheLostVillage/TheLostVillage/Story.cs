@@ -12,7 +12,7 @@ namespace TheLostVillage
     {
         string npc;
         string hero;
-        string start_date = "1526.August 24 Somewhere in Hungary near Mohács";
+        public string start_date = "1526.August 24 Somewhere in Hungary near Mohács";
         ArrayList witch = new ArrayList();
         ArrayList villager = new ArrayList();
         ArrayList mage = new ArrayList();

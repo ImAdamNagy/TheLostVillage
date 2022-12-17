@@ -32,10 +32,10 @@ namespace TheLostVillage
             Armor = 1;
             #region Starter Inventory
             Inventory = new List<Item>();
-            /*foreach (var item in File.ReadAllLines("Items.txt"))
+            foreach (var item in File.ReadAllLines("Items.txt"))
             {
                 Inventory.Add(new Item(item));
-            }*/
+            }
             #endregion
             Item potions = new Item("potion;3;true;0;0;500"); // ideiglenes
             Inventory.Add(potions);

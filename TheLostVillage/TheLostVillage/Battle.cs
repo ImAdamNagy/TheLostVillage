@@ -69,6 +69,14 @@ namespace TheLostVillage
                 player.LevelUp();
                 player.AddLoot(enemy.Loot);
             }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Játék vége");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
         }
     }
 }

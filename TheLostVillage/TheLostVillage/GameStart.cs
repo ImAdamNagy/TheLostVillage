@@ -11,14 +11,8 @@ namespace TheLostVillage
         public void Run()
         {
             MainMenu();
-            ActionsCall();
+            Console.ReadKey();
         }
-        private void ActionsCall()
-        {
-            ActionHandler actions = new ActionHandler();
-            actions.InventoryCall();
-        }
-
         private void MainMenu()
         {
             string title = @"                   (                                                  
@@ -38,6 +32,7 @@ namespace TheLostVillage
             {
                 case 0:
                     StartGame();
+                    
                     break;
                 case 1:
                     GameInfo();
@@ -72,8 +67,10 @@ namespace TheLostVillage
             }
             void StartGame()
             {
+                Console.Clear();
+                Console.SetWindowSize(161, 46);
                 action.CallDisplay();
-                Console.ReadKey(true);
+                action.Introduction();
             }
         }
         private void MinigameStart()
