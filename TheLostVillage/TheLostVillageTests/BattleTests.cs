@@ -31,6 +31,7 @@ namespace TheLostVillage.Tests
             Assert.AreEqual(firstbattle.currentTurn, 2);
             firstbattle.Turn("D");
             firstbattle.Turn("P");
+            Assert.AreEqual(flora.Potions.Count, 2);
             Assert.AreEqual(flora.Health, flora.MaxHealth);
             Assert.IsTrue(lavadog.defending);
             for (int i = 0; i < 5; i++)
