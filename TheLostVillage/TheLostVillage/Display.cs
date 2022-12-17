@@ -5,13 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TheLostVillage
 {
     internal class Display
     {
         private const int SCREENWIDTH = 160;
-        private const int SCREENHEIGHT = 45;
+        private const int SCREENHEIGHT = 40;
         private const int STATWIDTH = 17;
         private List<string> FinalScreen = new List<string>();
         private List<string> CommandBar = new List<string>();

@@ -67,5 +67,17 @@ namespace TheLostVillageTests
                 Assert.AreEqual(player.Level, 2);
             }
         }
+        [TestMethod()]
+        public void PotionTests()
+        {
+            Player anna = new Player("Anna");
+            Item poti = new Item("poti;2;true;0;0;500");
+            anna.AddLoot(poti);
+            Assert.AreEqual(poti, anna.Inventory.Find(x => x == poti));
+            poti.Count--;
+            Assert.AreEqual(poti.Count, anna.Inventory.Find(x => x.Name == "poti").Count);
+            poti.Count--;
+            Assert.AreEqual(poti.Count, anna.Inventory.Find(x => x.Name == "poti").Count);
+        }
     }
 }
