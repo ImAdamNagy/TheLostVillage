@@ -36,7 +36,7 @@ namespace TheLostVillage
             }
             return separator;
         }
-        private string Spacers(int amount)
+        public string Spacers(int amount)
         {
             string spacer = "";
             for (int i = 0; i < amount; i++)
