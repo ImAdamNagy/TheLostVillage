@@ -144,7 +144,7 @@ namespace TheLostVillage
 
         public void IntroductionArts(){
             List<string> s = new List<string>();
-            foreach (var item in File.ReadAllLines(@"Art\Buildings\Hut.txt"))
+            foreach (var item in File.ReadAllLines(@"Art\Hut.txt"))
             {
                 s.Add(AlignCenter(item).Remove(0, STATWIDTH));
             }
