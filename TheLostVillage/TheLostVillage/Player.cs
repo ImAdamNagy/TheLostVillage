@@ -21,7 +21,8 @@ namespace TheLostVillage
         }
         public int Level { get; private set; }
         public int Experience { get; set; }
-        public List<Item> Inventory { get; set; }
+        public List<Item> Inventory { get; private set; }
+        public Item Potions { get; private set; }
         public Player(string name) : base(name)
         {
             Name = name;
@@ -30,15 +31,9 @@ namespace TheLostVillage
             Health = MaxHealth;
             Strength = 4;
             Armor = 1;
-            #region Starter Inventory
             Inventory = new List<Item>();
-            /*foreach (var item in File.ReadAllLines("Items.txt"))
-            {
-                Inventory.Add(new Item(item));
-            }*/
-            #endregion
-            Item potions = new Item("potion;3;true;0;0;500"); // ideiglenes
-            Inventory.Add(potions);
+            Potions = new Item("potion;3;true;0;0;500");
+            Inventory.Add(Potions);
         }
             
         public void LevelUp()
@@ -52,17 +47,17 @@ namespace TheLostVillage
 
         public void UsePotion()
         {
-            if (Inventory.Exists(x => x.Name == "potion" && x.Count > 0))
+            if (Potions.Count > 0)
             {
                 Health += 100;
-                Inventory.Where(x => x.Name == "potion").FirstOrDefault().Count++;
+                Potions.Count--;
             }
         }
         public void AddLoot(Item loot)
         {
             if (Inventory.Exists(x => x.Name == loot.Name))
             {
-                Inventory.Where(x => x.Name == loot.Name).FirstOrDefault().Count++;
+                Inventory.Find(x => x.Name == loot.Name).Count += loot.Count;
             }
             else
             {
@@ -71,8 +66,8 @@ namespace TheLostVillage
 
             if (!loot.Consumable)
             {
-                Strength += loot.Attack_Damage;
-                Armor += loot.Armor;
+                Strength += loot.Attack_Damage * loot.Count;
+                Armor += loot.Armor * loot.Count;
             }
         }
     }

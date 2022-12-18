@@ -10,7 +10,13 @@ namespace TheLostVillage
 {
     class Story
     {
+<<<<<<< HEAD
         ArrayList start = new ArrayList();
+=======
+        string npc;
+        string hero;
+        public string start_date = "1526.August 24 Somewhere in Hungary near Mohács";
+>>>>>>> ec65c45b9ccca7ca9cdb58a6c339d7c80bea3523
         ArrayList witch = new ArrayList();
         ArrayList paper = new ArrayList();
         ArrayList villager = new ArrayList();

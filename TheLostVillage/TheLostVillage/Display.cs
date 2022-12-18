@@ -1,16 +1,18 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TheLostVillage
 {
     internal class Display
     {
         private const int SCREENWIDTH = 160;
-        private const int SCREENHEIGHT = 45;
+        private const int SCREENHEIGHT = 40;
         private const int STATWIDTH = 17;
         private List<string> FinalScreen = new List<string>();
         private List<string> CommandBar = new List<string>();
@@ -21,7 +23,7 @@ namespace TheLostVillage
 
         public string[] AviableCommands { get; set; }
         public string[] Map { get; set; }
-        public List<Item> OwnedItems { get; set; }
+        public List<Item> OwnedItems { get; set; } = new List<Item>();
         public string[] Stats { get; set; }
         public Display()
         {
@@ -85,9 +87,10 @@ namespace TheLostVillage
             CommandBar.Add(Separator());     
         }
 
-        private void CreateStatBar()
+        public void CreateStatBar()
         {
-            string[] stats = Stats;
+            Player player = new Player("Lovag");
+            string[] stats = player.stats;
             
             StatBar.Add(CreateBorder(Spacers(STATWIDTH-2)));
             foreach (var item in stats)
@@ -124,37 +127,65 @@ namespace TheLostVillage
 
         public void ShowInventory()
         {
-            foreach (var item in OwnedItems)
+            Player player = new Player("Lovag");
+            foreach (var item in player.Inventory)
             {
                 Inventory.Add("");
                 string tab = Spacers(5);
                 string itemline = $"{item.Name}{tab}{item.Count}x{tab}{item.Consumable}{tab}{item.Attack_Damage}{tab}{item.Armor}{tab}{item.Value}";
                 Inventory.Add(AlignCenter(itemline).Remove(0, STATWIDTH));
                 Inventory.Add("");
-            }            
-            
+            }
             for (int i = 0; i < Inventory.Count; i++)
             {
                 StatBar[i] += Inventory[i];
             }
-            StatAndGameArea = StatBar;
+        }
 
+        public void IntroductionArts(){
+            List<string> s = new List<string>();
+            foreach (var item in File.ReadAllLines(@"Art\Buildings\Hut.txt"))
+            {
+                s.Add(AlignCenter(item).Remove(0, STATWIDTH));
+            }
+            foreach (var item in File.ReadAllLines(@"Art\Characters, monsters\WitchCauldronBrew.txt"))
+            {
+                s.Add(AlignCenter(item).Remove(0, STATWIDTH));
+            }
+            for (int i = 0; i < s.Count; i++)
+            {
+                StatBar[i] += s[i];
+            }
+            StatAndGameArea = StatBar;
+        }
+
+        public void LavaDogFight()
+        {
+            List<string> lavadog = new List<string>();
+            foreach (var item in File.ReadAllLines(@"Art\Characters, monsters\Zombie.txt"))
+            {
+                lavadog.Add(AlignCenter(item).Remove(0, STATWIDTH));
+            }
+            
+            for (int i = 0; i < lavadog.Count; i++)
+            {
+                StatBar.Add(lavadog[i]);
+            }
+            StatAndGameArea = StatBar;
         }
 
         private void Assembly()
         {
             CreateCommandBar();
             CreateStatBar();
-            ShowInventory();
+            IntroductionArts();
             CommandBar.ForEach(x => FinalScreen.Add(x));
             StatAndGameArea.ForEach(x => FinalScreen.Add(x));
         }
-
         public void Screen()
         {
             Assembly();
             FinalScreen.ForEach(x => Console.WriteLine(x));
-            Console.WriteLine(SCREENWIDTH - StatBar[5].Count());
         }
         
     }
