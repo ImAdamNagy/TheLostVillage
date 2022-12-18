@@ -10,23 +10,34 @@ namespace TheLostVillage
 {
     class Story
     {
-        string npc;
-        string hero;
-        string start_date = "1526.August 24 Somewhere in Hungary near Mohács";
+        ArrayList start = new ArrayList();
         ArrayList witch = new ArrayList();
+        ArrayList paper = new ArrayList();
         ArrayList villager = new ArrayList();
         ArrayList mage = new ArrayList();
         ArrayList dragon = new ArrayList();
-        public Story()
+        ArrayList end = new ArrayList();
+        public void startwrite()
         {
-
+            for (int i = 0; i < start.Count; i++)
+            {
+                Console.WriteLine(start[i]);
+                Console.ReadKey();
+            }
         }
-
         public void witchwrite()
         {
             for (int i = 0; i < witch.Count; i++)
             {
                 Console.WriteLine(witch[i]);
+                Console.ReadKey();
+            }
+        }
+        public void paperwrite()
+        {
+            for (int i = 0; i < paper.Count; i++)
+            {
+                Console.WriteLine(paper[i]);
                 Console.ReadKey();
             }
         }
@@ -38,7 +49,9 @@ namespace TheLostVillage
                 Console.ReadKey();
             }
 
-        }public void magewrite()
+        }
+        
+        public void magewrite()
         {
             for (int i = 0; i < mage.Count; i++)
             {
@@ -46,7 +59,9 @@ namespace TheLostVillage
                 Console.ReadKey();
             }
 
-        }public void dragonwrite()
+        }
+        
+        public void dragonwrite()
         {
             for (int i = 0; i < dragon.Count; i++)
             {
@@ -55,14 +70,31 @@ namespace TheLostVillage
             }
 
         }
+        public void endwrite()
+        {
+            for (int i = 0; i < end.Count; i++)
+            {
+                Console.WriteLine(dragon[i]);
+                Console.ReadKey();
+            }
+
+        }
         public void read()
         {
-            
+
+            foreach (var item in File.ReadAllLines("start.txt"))
+            {
+                start.Add(item);
+            }
             foreach (var item in File.ReadAllLines("witch.txt"))
             {
                 witch.Add(item);
             }
-          
+            foreach (var item in File.ReadAllLines("paper.txt"))
+            {
+                paper.Add(item);
+            }
+
             foreach (var item in File.ReadAllLines("villager.txt"))
             {
 
@@ -79,6 +111,11 @@ namespace TheLostVillage
             {
 
                 dragon.Add(item);
+            }
+            foreach (var item in File.ReadAllLines("end.txt"))
+            {
+
+                end.Add(item);
             }
         }
     }
