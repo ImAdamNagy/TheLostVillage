@@ -26,17 +26,17 @@ namespace TheLostVillage.Tests
         public void BattlePlayerTurnTest() // no longer testable because data is not passed here
         {
             Battle firstbattle = new Battle(flora, lavadog);
-            firstbattle.Turn(); //choose A
+            firstbattle.Fight(); //choose A
             Assert.AreNotEqual(lavadog.MaxHealth, lavadog.Health);
             Assert.AreEqual(firstbattle.currentTurn, 2);
-            firstbattle.Turn(); // choose d
-            firstbattle.Turn(); // choose P
+            firstbattle.Fight(); // choose d
+            firstbattle.Fight(); // choose P
             Assert.AreEqual(flora.Potions.Count, 2);
             Assert.AreEqual(flora.Health, flora.MaxHealth);
             Assert.IsTrue(lavadog.defending);
             for (int i = 0; i < 5; i++)
             {
-                firstbattle.Turn(); // a
+                firstbattle.Fight(); // a
             }
             Assert.AreEqual(lavadog.Health, 0);
             Assert.IsTrue(firstbattle.Over);

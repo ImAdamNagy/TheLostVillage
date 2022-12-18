@@ -1,5 +1,5 @@
-Hut;Defense,Attack,Inventory;witch;LavaDog,150,20,10,Lavadog
+Hut;Fight,Inventory;witch;LavaDog,150,20,10,Lavadog
 Forest;Inventory;villager;none
 MushroomHut;Inventory;mage;none
 TaskScroll;Inventory;paper;none
-DragonLyingShort;Attack,Defense;dragon;Dragon,200,30,30,DragonLyingShort
+DragonLyingShort;Fight;dragon;Dragon,200,30,30,DragonLyingShort

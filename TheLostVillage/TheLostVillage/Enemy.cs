@@ -24,10 +24,10 @@ namespace TheLostVillage
         {
             Name = name;
             Strength = strength;
-            //Loot = loot;
             MaxHealth = health;
             Health = MaxHealth;
             Armor = armor;
+            Loot = new Item("Monster talisman;1;false;0;0;1500");
         }
     }
 }

@@ -26,6 +26,7 @@ namespace TheLostVillage
               sv = array[3].Split(',');
               Enemy = new Enemy(sv[0], int.Parse(sv[1]), int.Parse(sv[2]), int.Parse(sv[3]), sv[4]);
             }
+            
         }
     }
 }

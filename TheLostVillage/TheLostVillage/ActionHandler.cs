@@ -10,7 +10,6 @@ namespace TheLostVillage
     public class ActionHandler
     {
         public List<LevelHandler> levels = new List<LevelHandler>();
-        public Player playerdata;
         public ActionHandler()
         {
             foreach (var item in File.ReadAllLines("levels.txt"))
@@ -18,18 +17,22 @@ namespace TheLostVillage
                levels.Add(new LevelHandler(item));
             }
         }
-        public void UserInput(int level)
+        public void UserInput(int level, Display display)
         {
-            HandleInput(Console.ReadLine(), level);
+            Console.Write("Command:");
+            HandleInput(Console.ReadLine(), level, display);
         }
 
-        private void HandleInput(string command, int level)
+        private void HandleInput(string command, int level, Display display)
         {
             if (levels[level].Commands.Contains(command))
             {
                 switch (command)
                 {
                     case "Inventory":
+                        display.LevelHandler.Commands = new string[] { "Press a key to exit inventory" };
+                        display.Screen(true);
+                        Console.ReadKey();
                         break;
                     default:
                         break;
@@ -37,8 +40,8 @@ namespace TheLostVillage
             }
             else
             {
-                Console.WriteLine("Nem megfelelő parancs, ellenőrizd az elérhető parancsokat.");
-                UserInput(level);
+                Console.WriteLine("Incorrect command, please check the avaible commands above.");
+                UserInput(level, display);
             }
 
             Console.WriteLine();

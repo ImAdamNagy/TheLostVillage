@@ -24,7 +24,7 @@ namespace TheLostVillage
             this.player = player;
             this.enemy = enemy;
             currentTurn = 1;
-            Console.WriteLine("You've been attacked by a {0}!", enemy.Name);
+            Console.WriteLine("You've been attacked by a(n) {0}!", enemy.Name);
             SetCommands();
         }
         public void SetCommands()
@@ -38,7 +38,7 @@ namespace TheLostVillage
             }
             commands = c.ToArray();
         }
-        public void Turn()
+        public void Fight()
         {
             player.defending = false;
             enemy.defending = currentTurn % 3 == 0 ? true : false;
@@ -53,7 +53,7 @@ namespace TheLostVillage
                 SetCommands();
             }
         }
-        public void PlayerTurn()
+        private void PlayerTurn()
         {
             bool valid = false;
             do
@@ -86,7 +86,7 @@ namespace TheLostVillage
                 }
             } while (!valid);
         }
-        public void EnemyTurn()
+        private void EnemyTurn()
         {
             if (!enemy.defending && enemy.IsAlive)
             {

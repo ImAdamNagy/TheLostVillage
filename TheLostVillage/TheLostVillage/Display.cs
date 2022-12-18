@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace TheLostVillage
 {
-    internal class Display
+    public class Display
     {
         private const int SCREENWIDTH = 160;
         private const int SCREENHEIGHT = 40;
@@ -141,22 +141,44 @@ namespace TheLostVillage
             StatBar.Clear();
             StatAndGameArea.Clear();
             FinalScreen.Clear();
-            Console.Clear();
+            Console.Clear();      
             #endregion
             CreateCommandBar();
             CreateStatBar();
-
             InsertMap(LevelHandler.MapUrl);
             CommandBar.ForEach(x => FinalScreen.Add(x));
             StatAndGameArea.ForEach(x => FinalScreen.Add(x));
         }
-        public void Screen()
+        private void InvAssembly()
+        {
+            #region ClearPreviousScreen
+            CommandBar.Clear();
+            StatBar.Clear();
+            StatAndGameArea.Clear();
+            FinalScreen.Clear();
+            Inventory.Clear();
+            Console.Clear();
+            #endregion
+            CreateCommandBar();
+            CreateStatBar();
+            ShowInventory();
+            CommandBar.ForEach(x => FinalScreen.Add(x));
+            StatAndGameArea.ForEach(x => FinalScreen.Add(x));
+        }
+        public void Screen(bool i)
         {
             Console.SetWindowSize(SCREENWIDTH + 1, SCREENHEIGHT + 1);
-            Assembly();
-            FinalScreen.ForEach(x => Console.WriteLine(x));
-            Story.WriteStory(LevelHandler.DialogeUrl);
-        }
-        
+            if (i)
+            {
+                InvAssembly();
+                FinalScreen.ForEach(x => Console.WriteLine(x));
+            }
+            else
+            {
+                Assembly();
+                FinalScreen.ForEach(x => Console.WriteLine(x));
+                Story.WriteStory(LevelHandler.DialogeUrl);
+            }                   
+        }       
     }
 }
