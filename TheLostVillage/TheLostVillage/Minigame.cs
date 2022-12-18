@@ -47,7 +47,7 @@ namespace TheLostVillage
         public void GuessAttempts()
         {
             Display display = new Display();
-            Console.Write(display.Spacers(80));
+            Console.Write(display.Spacers(80 - (SecretWord_1.Length/2)));
             string guess = Console.ReadLine();
             if (guess == SecretWord_1)
             {
