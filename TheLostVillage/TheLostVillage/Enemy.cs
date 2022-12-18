@@ -18,7 +18,8 @@ namespace TheLostVillage
             };
         }
         public Item Loot { get; private set; }
-        public Enemy(string name, int health, int strength, int armor, Item loot) : base(name)
+        public string ArtPath { get; private set; }
+        public Enemy(string name, int health, int strength, int armor, Item loot, string ArtPath = @"Art\Characters, monsters\Zombie.txt") : base(name)
         {
             Name = name;
             Strength = strength;

@@ -11,6 +11,7 @@ namespace TheLostVillage
         public Player player { get; private set; }
         public Enemy enemy { get; private set; }
         public int currentTurn { get; private set; }
+        public string[] commands { get; private set; }
         public bool Over
         {
             get
@@ -23,60 +24,100 @@ namespace TheLostVillage
             this.player = player;
             this.enemy = enemy;
             currentTurn = 1;
+            Console.WriteLine("You've been attacked by a {0}!", enemy.Name);
+            SetCommands();
         }
-        public void Turn(string action)
+        public void SetCommands()
+        {
+            List<string> c = new List<string>();
+            c.Add("Attack(A)");
+            c.Add("Defend(D)");
+            if (player.Potions.Count > 0)
+            {
+                c.Add($"Potion(P)({player.Potions.Count} left)");
+            }
+            commands = c.ToArray();
+        }
+        public void Turn()
         {
             player.defending = false;
             enemy.defending = currentTurn % 3 == 0 ? true : false;
-            PlayerTurn(action);
+            PlayerTurn();
             EnemyTurn();
             
-            if (Over)
-            {
+            if (Over) {
                 Finish();
-            }
-            else
-            {
+            } 
+            else {
                 ++currentTurn;
+                SetCommands();
             }
         }
-        public void PlayerTurn(string action)
+        public void PlayerTurn()
         {
-            switch (action)
+            bool valid = false;
+            do
             {
-                case "A":
-                    player.Attack(enemy);
-                    break;
-                case "D":
-                    player.defending = true;
-                    break;
-                case "P":
-                    player.UsePotion();
-                    break;
-            }
+                Console.Write("What will you do? ");
+                switch (Console.ReadLine().ToUpper())
+                {
+                    case "A":
+                        player.Attack(enemy); valid = true;
+                        Console.WriteLine("You attack the {0}! {0} has {1} health left.", enemy.Name, enemy.Health);
+                        break;
+                    case "D":
+                        player.defending = true; valid = true;
+                        Console.WriteLine("You defend against {0}'s attacks.", enemy.Name);
+                        break;
+                    case "P":
+                        if (player.Potions.Count <= 0)
+                        {
+                            Console.WriteLine("You don't have enough potions!");
+                        }
+                        else
+                        {
+                            player.UsePotion(); valid = true;
+                            Console.WriteLine("You use a potion and heal up. You have {0} health left!", player.Health);
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("There is no option like that!");
+                        break;
+                }
+            } while (!valid);
         }
         public void EnemyTurn()
         {
             if (!enemy.defending && enemy.IsAlive)
             {
                 enemy.Attack(player);
+                Console.WriteLine("{0} attacks you! You have {1} health left.", enemy.Name, player.Health);
+            }
+            else
+            {
+                Console.WriteLine("{0} defended against your attack.", enemy.Name);
             }
         }
         public void Finish()
         {
             if (player.IsAlive)
             {
+                Console.WriteLine("You won!");
                 player.LevelUp();
+                Console.WriteLine("You gained a level!");
                 player.AddLoot(enemy.Loot);
+                Console.WriteLine($"{enemy.Name} dropped an item. It's a {enemy.Loot.Name}! You pick it up.");
+                Console.Write("Press any key to continue... ");
+                Console.ReadKey();
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine("Játék vége");
+                Console.WriteLine("You lost to {0} and died.", enemy.Name);
+                Console.WriteLine("Game Over");
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-
         }
     }
 }
