@@ -20,7 +20,7 @@ namespace TheLostVillage
         private List<string> StatAndGameArea = new List<string>();
         private List<string> Inventory = new List<string>();
 
-
+        public string ArtPath { get; set; }
         public string[] AviableCommands { get; set; }
         public string[] Map { get; set; }
         public List<Item> OwnedItems { get; set; } = new List<Item>();
@@ -76,7 +76,11 @@ namespace TheLostVillage
         private void CreateCommandBar() //Uses 3 lines
         {
             string[] commands = new string[] { "alma", "körte","asd", "láma","ló", "kerekesszék" };
-            AviableCommands = commands;
+            //AviableCommands = commands;
+            if (AviableCommands == null)
+            {
+                AviableCommands = commands;
+            }
 
             CommandBar.Add(Separator());
             #region Center Align
@@ -90,10 +94,13 @@ namespace TheLostVillage
         public void CreateStatBar()
         {
             Player player = new Player("Lovag");
-            string[] stats = player.stats;
+            if (Stats == null)
+            {
+                Stats = player.stats;
+            }
             
             StatBar.Add(CreateBorder(Spacers(STATWIDTH-2)));
-            foreach (var item in stats)
+            foreach (var item in Stats)
             {
                 string statline = item + Spacers(STATWIDTH-item.Length-2);
                 StatBar.Add(CreateBorder(statline));
@@ -128,7 +135,7 @@ namespace TheLostVillage
         public void ShowInventory()
         {
             Player player = new Player("Lovag");
-            foreach (var item in player.Inventory)
+            foreach (var item in OwnedItems)
             {
                 Inventory.Add("");
                 string tab = Spacers(5);
@@ -174,11 +181,30 @@ namespace TheLostVillage
             StatAndGameArea = StatBar;
         }
 
+        public void Arts()
+        {
+            List<string> artList = new List<string>();
+            if (ArtPath == null)
+            {
+                ArtPath = @"Art\Buildings\Hut.txt";
+            }
+
+            foreach (var item in File.ReadAllLines(ArtPath))
+            {
+                artList.Add(AlignCenter(item).Remove(0, STATWIDTH));
+            }
+            for (int i = 0; i < artList.Count; i++)
+            {
+                StatBar.Add(artList[i]);
+            }
+            StatAndGameArea = StatBar;
+        }
+
         private void Assembly()
         {
             CreateCommandBar();
             CreateStatBar();
-            IntroductionArts();
+            Arts();
             CommandBar.ForEach(x => FinalScreen.Add(x));
             StatAndGameArea.ForEach(x => FinalScreen.Add(x));
         }
