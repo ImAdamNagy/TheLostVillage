@@ -23,7 +23,7 @@ namespace TheLostVillage
 
         public LevelHandler LevelHandler { get; set; }
         private string[] AviableCommands { get; set; }
-        public List<Item> OwnedItems { get; set; } = new List<Item>();
+        public List<Item> OwnedItems { get; set; }
         public string[] Stats { get; set; }
 
         #region FormatHelpers
@@ -131,16 +131,21 @@ namespace TheLostVillage
             {
                 StatBar[i] += Inventory[i];
             }
+            StatAndGameArea = StatBar;
         }
 
         private void Assembly()
         {
+            #region ClearPreviousScreen
             CommandBar.Clear();
             StatBar.Clear();
             StatAndGameArea.Clear();
+            FinalScreen.Clear();
             Console.Clear();
+            #endregion
             CreateCommandBar();
             CreateStatBar();
+
             InsertMap(LevelHandler.MapUrl);
             CommandBar.ForEach(x => FinalScreen.Add(x));
             StatAndGameArea.ForEach(x => FinalScreen.Add(x));

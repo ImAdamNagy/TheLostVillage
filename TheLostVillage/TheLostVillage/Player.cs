@@ -23,6 +23,7 @@ namespace TheLostVillage
         public int Experience { get; set; }
         public List<Item> Inventory { get; private set; }
         public Item Potions { get; private set; }
+        public bool Invopen { get; set; }
         public Player(string name) : base(name)
         {
             Name = name;
@@ -34,6 +35,7 @@ namespace TheLostVillage
             Inventory = new List<Item>();
             Potions = new Item("potion;3;true;0;0;500");
             Inventory.Add(Potions);
+            Invopen = false;
         }
             
         public void LevelUp()
