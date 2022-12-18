@@ -62,46 +62,50 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Art\Buildings\Hut.txt">
+    <Content Include="Art\Buildings\Hut.txt" />
+    <Content Include="Art\Buildings\MushroomHut.txt" />
+    <Content Include="Art\Characters, monsters\Devil.txt" />
+    <Content Include="Art\Characters, monsters\DevilBig.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Buildings\MushroomHut.txt">
+    <Content Include="Art\Characters, monsters\Dragon\DragonFireBreathing.txt" />
+    <Content Include="Art\Characters, monsters\Dragon\DragonFrontFacing.txt" />
+    <Content Include="Art\Characters, monsters\Dragon\DragonLying.txt" />
+    <Content Include="Art\Characters, monsters\Dragon\DragonLyingShort.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Characters, monsters\Devil.txt">
+    <Content Include="Art\Characters, monsters\LavaDog.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Characters, monsters\Dragon\DragonFireBreathing.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Art\Characters, monsters\Dragon\DragonFrontFacing.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Art\Characters, monsters\Dragon\DragonLying.txt">
+    <Content Include="Art\Characters, monsters\Villager.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Art\Characters, monsters\WitchCauldronBrew.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Characters, monsters\Wizard.txt">
+    <Content Include="Art\Characters, monsters\Wizard.txt" />
+    <Content Include="Art\Characters, monsters\Zombie.txt" />
+    <Content Include="Art\Defeat.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Characters, monsters\Zombie.txt">
+    <Content Include="Art\GameOver.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Items\Scroll.txt">
+    <Content Include="Art\GameQuit.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Landscape\Hungary.txt">
+    <Content Include="Art\Items\Scroll.txt" />
+    <Content Include="Art\Items\TaskScroll.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Landscape\Mountain.txt">
+    <Content Include="Art\Landscape\Forest.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Landscape\Trees.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Art\Landscape\Village.txt">
+    <Content Include="Art\Landscape\Hungary.txt" />
+    <Content Include="Art\Landscape\Mountain.txt" />
+    <Content Include="Art\Landscape\Trees.txt" />
+    <Content Include="Art\Landscape\Village.txt" />
+    <Content Include="Art\Victory.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="dragon.txt">
@@ -114,9 +118,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="end.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Items.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="mage.txt">
