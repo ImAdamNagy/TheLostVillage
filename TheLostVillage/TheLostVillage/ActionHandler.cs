@@ -7,13 +7,16 @@ using System.IO;
 
 namespace TheLostVillage
 {
-    class ActionHandler
+    public class ActionHandler
     {
-        //public void Introduction()
-        //{
-        //    Story story = new Story();
-        //    story.read();
-        //    story.witchwrite();
-        //}
+        public List<LevelHandler> levels = new List<LevelHandler>();
+
+        public ActionHandler()
+        {
+            foreach (var item in File.ReadAllLines("levels.txt"))
+            {
+               levels.Add(new LevelHandler(item));
+            }
+        }
     }
 }

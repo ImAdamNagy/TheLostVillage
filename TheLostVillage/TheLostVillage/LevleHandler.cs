@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace TheLostVillage
 {
-    internal class LevelHandler
+    public class LevelHandler
     {
         public string MapUrl;
         public string[] Commands;
         public string DialogeUrl;
-        public Story story;
         public Enemy Enemy;
         public Item Item;
 

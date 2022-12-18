@@ -84,8 +84,7 @@ namespace TheLostVillage
 
         public void CreateStatBar()
         {
-            Player player = new Player("Lovag");
-            string[] stats = player.stats;
+            string[] stats = Stats;
             
             StatBar.Add(CreateBorder(Spacers(STATWIDTH-2)));
             foreach (var item in stats)
@@ -120,8 +119,7 @@ namespace TheLostVillage
 
         public void ShowInventory()
         {
-            Player player = new Player("Lovag");
-            foreach (var item in player.Inventory)
+            foreach (var item in OwnedItems)
             {
                 Inventory.Add("");
                 string tab = Spacers(5);
@@ -137,6 +135,10 @@ namespace TheLostVillage
 
         private void Assembly()
         {
+            CommandBar.Clear();
+            StatBar.Clear();
+            StatAndGameArea.Clear();
+            Console.Clear();
             CreateCommandBar();
             CreateStatBar();
             InsertMap(LevelHandler.MapUrl);
@@ -148,6 +150,7 @@ namespace TheLostVillage
             Console.SetWindowSize(SCREENWIDTH + 1, SCREENHEIGHT + 1);
             Assembly();
             FinalScreen.ForEach(x => Console.WriteLine(x));
+            Story.WriteStory(LevelHandler.DialogeUrl);
         }
         
     }

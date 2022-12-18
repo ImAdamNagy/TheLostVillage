@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TheLostVillage
 {
@@ -10,15 +11,20 @@ namespace TheLostVillage
     {
         static Player player = new Player("nAdam");
         static Display display = new Display();
-        public ActionHandler actionHandler = new ActionHandler();
+        static ActionHandler actionHandler = new ActionHandler();
         static GameStart game = new GameStart();
-        static LevelHandler handler = new LevelHandler();
         static void Main(string[] args)
         {           
             game.Run();
-            display.LevelHandler = handler;
-            display.Screen();
+            for (int i = 0; i < actionHandler.levels.Count; i++)
+            {
+                display.Stats = player.stats;
+                display.OwnedItems = player.Inventory;
+                display.LevelHandler = actionHandler.levels[i];
+                display.Screen();
+            }
             Console.ReadKey();
         }
     }
 }
+

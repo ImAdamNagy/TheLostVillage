@@ -16,7 +16,8 @@ namespace TheLostVillage
         public void MainMenu()
         {
             string title = "";
-            foreach (var item in File.ReadAllLines("title.txt"))
+            foreach (var item in 
+                File.ReadAllLines("title.txt"))
             {
                 title += item + "\n";
             }
