@@ -10,7 +10,7 @@ namespace TheLostVillage
     class Minigame
     {
         Random Shuffle = new Random();
-        static string SecretWord_1 = "Bármit írok";
+        static string SecretWord_1 = "Have faith in yourself";
 
         List<string> words = new List<string>();
 
@@ -18,11 +18,14 @@ namespace TheLostVillage
 
         public void ShuffleTheLettersOfTheWord()
         {
+            Display display = new Display();
+            string task = "Solve the secret of the scroll to be able to kill the dragon";
+            Console.WriteLine($"\n{String.Format("{0," + ((Console.WindowWidth / 2) + (task.Length / 2)) + "}", task)}");
             foreach (var item in SecretWord_1.Split(' '))
             {
                 words.Add(item);
             }
-            Console.WriteLine("Guess the word to solve the mystery!\n");
+            string secret = "";
             foreach (var item in words)
             {
                 for (int i = 0; i < item.Length; i++)
@@ -32,26 +35,32 @@ namespace TheLostVillage
                     do { RandomPos = Shuffle.Next(0, item.Length); }
                     while (UsedPositions.Contains(RandomPos));
 
-                    Console.Write(item[RandomPos]);
+                    secret += item[RandomPos];
                     UsedPositions.Add(RandomPos);
                 }
-                Console.Write("  ");
                 UsedPositions.Clear();
+                secret += "   ";
             }
+            Console.WriteLine("\n" + display.AlignCenter(secret));
+            Console.WriteLine();
         }
         public void GuessAttempts()
         {
-            Console.WriteLine();
+            Display display = new Display();
+            Console.Write(display.Spacers(80));
             string guess = Console.ReadLine();
             if (guess == SecretWord_1)
             {
                 Console.Clear();
-                Console.WriteLine("Gratulálok megfejtetted a tekercs titkád, mostmár el tudod olvasni a tekercsben rejlő varázslatot!");
+                string win = "Congratulations you solved the secret of the scroll. You may go on and kill the dragon";
+                Console.WriteLine($"\n{String.Format("{0," + ((Console.WindowWidth / 2) + (win.Length / 2)) + "}", win)}");
                 Console.ReadKey();
-            }else
+            }
+            else
             {
+                string again = "Wrong answer, try again";
                 words.Clear();
-                Console.WriteLine("Nem ez a helyes válasz próbálkozz újra!");
+                Console.WriteLine($"\n{String.Format("{0," + ((Console.WindowWidth / 2) + (again.Length / 2)) + "}", again)}");
                 Console.ReadKey();
                 Console.Clear();
                 ShuffleTheLettersOfTheWord();

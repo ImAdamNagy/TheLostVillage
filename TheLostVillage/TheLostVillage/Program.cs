@@ -11,6 +11,7 @@ namespace TheLostVillage
     {
         static Player player = new Player("nAdam");
         static Display display = new Display();
+        static Minigame minigame = new Minigame();
         static ActionHandler actionHandler = new ActionHandler();
         static GameStart game = new GameStart();
         static void Main(string[] args)
@@ -18,10 +19,19 @@ namespace TheLostVillage
             game.Run();
             for (int i = 0; i < actionHandler.levels.Count; i++)
             {
-                display.Stats = player.stats;
-                display.OwnedItems = player.Inventory;
-                display.LevelHandler = actionHandler.levels[i];
-                display.Screen();
+                if (i == 3)
+                {
+                    Console.Clear();
+                    minigame.ShuffleTheLettersOfTheWord();
+                    minigame.GuessAttempts();
+                }
+                else
+                {
+                    display.Stats = player.stats;
+                    display.OwnedItems = player.Inventory;
+                    display.LevelHandler = actionHandler.levels[i];
+                    display.Screen();
+                }
             }
             Console.ReadKey();
         }

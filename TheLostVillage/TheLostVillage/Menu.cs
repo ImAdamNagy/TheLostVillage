@@ -48,11 +48,6 @@ namespace TheLostVillage
             }
             Console.ResetColor();
         }
-        public string DisplayAboutTheGame()
-        {
-            string info = "About the game";
-            return info;
-        }
         public int Run()
         {
             ConsoleKey keyPressed;
