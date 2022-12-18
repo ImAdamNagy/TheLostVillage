@@ -24,7 +24,7 @@ namespace TheLostVillage
             Display DisplayHelper = new Display();
             int firstLineWidth = Title.Split('\n')[0].Length;
             int screenWidth = firstLineWidth;
-            Console.WindowWidth = firstLineWidth;
+            Console.WindowWidth = firstLineWidth + 5;
             Console.WriteLine(Title);
             for (int i = 0; i < Options.Length; i++)
             {
@@ -83,7 +83,27 @@ namespace TheLostVillage
 
             return Index;
         }
-        
+        public void ExitGame()
+        {
+            Environment.Exit(0);
+        }
+        public void GameInfo()
+        {
+            Display center = new Display();
+            Console.Clear();
+            string gameInfo = "\n\n\nYou wake up in the Witch's hut and the witch gives you a list of tasks.\nYou have Five Days to find The Lost Village where people will be able to help the Hungarians Defeat the Turks.\n On the list you can find step by step what you have to do and where to go...";
+            string credits = "\n\n\nThis game was made by \n Kinga Kiss \n Péter Dobronay \n Donát Dénes \n Ferenc Török \n Adam Nagy";
+            foreach (var item in gameInfo.Split('\n'))
+            {
+                Console.WriteLine("\n" + center.AlignCenter(item));
+            }
+
+            foreach (var item in credits.Split('\n'))
+            {
+                Console.WriteLine("\n" + center.AlignCenter(item));
+            }
+            Console.SetWindowSize(161, 41);
+        }
     }
 }
 

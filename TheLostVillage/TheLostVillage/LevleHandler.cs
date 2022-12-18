@@ -13,11 +13,20 @@ namespace TheLostVillage
         public string DialogeUrl;
         public Story story;
         public Enemy Enemy;
+        public Item Item;
 
-        public LevelHandler()
+        public LevelHandler(string map)
         {
-            MapUrl = @"Buildings\Hut";
-            Commands = new string[] { "Defense", "Attack", "Run", "Inventory"};
+            string[] array = map.Split(';');
+            MapUrl = array[0];
+            Commands = array[1].Split(',');
+            DialogeUrl = array[2];
+            string[] sv;
+            if (array[3] != "none")
+            {
+              sv = array[3].Split(',');
+              Enemy = new Enemy(sv[0], int.Parse(sv[1]), int.Parse(sv[2]), int.Parse(sv[3]), sv[4]);
+            }
         }
     }
 }
