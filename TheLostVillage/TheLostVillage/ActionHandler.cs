@@ -18,7 +18,6 @@ namespace TheLostVillage
         {
             Story story = new Story();
             story.read();
-            Console.WriteLine(story.start_date);
             story.witchwrite();
         }
     }

@@ -68,7 +68,7 @@ namespace TheLostVillage
             void StartGame()
             {
                 Console.Clear();
-                Console.SetWindowSize(161, 46);
+                Console.SetWindowSize(161, 44);
                 action.CallDisplay();
                 action.Introduction();
             }
