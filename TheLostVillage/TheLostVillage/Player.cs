@@ -21,7 +21,7 @@ namespace TheLostVillage
         }
         public int Level { get; private set; }
         public int Experience { get; set; }
-        public List<Item> Inventory { get; set; }
+        public List<Item> Inventory { get; private set; }
         public Item Potions { get; private set; }
         public Player(string name) : base(name)
         {
@@ -32,8 +32,7 @@ namespace TheLostVillage
             Strength = 4;
             Armor = 1;
             Inventory = new List<Item>();
-            
-            Potions = new Item("potion;3;true;0;0;500"); // ideiglenes
+            Potions = new Item("potion;3;true;0;0;500");
             Inventory.Add(Potions);
         }
             
@@ -58,7 +57,7 @@ namespace TheLostVillage
         {
             if (Inventory.Exists(x => x.Name == loot.Name))
             {
-                Inventory.Find(x => x.Name == loot.Name).Count++;
+                Inventory.Find(x => x.Name == loot.Name).Count += loot.Count;
             }
             else
             {
@@ -67,8 +66,8 @@ namespace TheLostVillage
 
             if (!loot.Consumable)
             {
-                Strength += loot.Attack_Damage;
-                Armor += loot.Armor;
+                Strength += loot.Attack_Damage * loot.Count;
+                Armor += loot.Armor * loot.Count;
             }
         }
     }
