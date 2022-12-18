@@ -9,16 +9,11 @@ namespace TheLostVillage
 {
     class ActionHandler
     {
-        Display display = new Display();
-        public void CallDisplay()
-        {
-            display.Screen();
-        }
-        public void Introduction()
-        {
-            Story story = new Story();
-            story.read();
-            story.witchwrite();
-        }
+        //public void Introduction()
+        //{
+        //    Story story = new Story();
+        //    story.read();
+        //    story.witchwrite();
+        //}
     }
 }

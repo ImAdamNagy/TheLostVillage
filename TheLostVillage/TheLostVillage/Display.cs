@@ -21,14 +21,10 @@ namespace TheLostVillage
         private List<string> Inventory = new List<string>();
 
 
-        public string[] AviableCommands { get; set; }
-        public string[] Map { get; set; }
+        public LevelHandler LevelHandler { get; set; }
+        private string[] AviableCommands { get; set; }
         public List<Item> OwnedItems { get; set; } = new List<Item>();
         public string[] Stats { get; set; }
-        public Display()
-        {
-            Console.SetWindowSize(SCREENWIDTH+1, SCREENHEIGHT+1);
-        }
 
         #region FormatHelpers
         private string Separator()
@@ -75,8 +71,7 @@ namespace TheLostVillage
         #endregion
         private void CreateCommandBar() //Uses 3 lines
         {
-            string[] commands = new string[] { "alma", "körte","asd", "láma","ló", "kerekesszék" };
-            AviableCommands = commands;
+            AviableCommands = LevelHandler.Commands;
 
             CommandBar.Add(Separator());
             #region Center Align
@@ -108,21 +103,19 @@ namespace TheLostVillage
             StatBar.Add(Separator());
 
         }
-
-        private void MapMerge()
+        
+        private void InsertMap(string url)
         {
-            string[] helper = new string[StatBar.Count];
-            for (int i = 0; i < StatBar.Count-1; i++)
+            List<string> sv = new List<string>();
+            foreach (var item in File.ReadAllLines(@"Art\"+url+".txt"))
             {
-                helper[i] = $"{Spacers(i)}{i}";
+                sv.Add(AlignCenter(item).Remove(0, STATWIDTH));
             }
-            Map = helper;
-
-
-            for (int i = 0; i < StatBar.Count; i++)
+            for (int i = 0; i < sv.Count; i++)
             {
-                StatAndGameArea.Add(StatBar[i] + Map[i]);
+                StatBar[i] += sv[i];
             }
+            StatAndGameArea = StatBar;
         }
 
         public void ShowInventory()
@@ -142,48 +135,17 @@ namespace TheLostVillage
             }
         }
 
-        public void IntroductionArts(){
-            List<string> s = new List<string>();
-            foreach (var item in File.ReadAllLines(@"Art\Buildings\Hut.txt"))
-            {
-                s.Add(AlignCenter(item).Remove(0, STATWIDTH));
-            }
-            foreach (var item in File.ReadAllLines(@"Art\Characters, monsters\WitchCauldronBrew.txt"))
-            {
-                s.Add(AlignCenter(item).Remove(0, STATWIDTH));
-            }
-            for (int i = 0; i < s.Count; i++)
-            {
-                StatBar[i] += s[i];
-            }
-            StatAndGameArea = StatBar;
-        }
-
-        public void LavaDogFight()
-        {
-            List<string> lavadog = new List<string>();
-            foreach (var item in File.ReadAllLines(@"Art\Characters, monsters\Zombie.txt"))
-            {
-                lavadog.Add(AlignCenter(item).Remove(0, STATWIDTH));
-            }
-            
-            for (int i = 0; i < lavadog.Count; i++)
-            {
-                StatBar.Add(lavadog[i]);
-            }
-            StatAndGameArea = StatBar;
-        }
-
         private void Assembly()
         {
             CreateCommandBar();
             CreateStatBar();
-            IntroductionArts();
+            InsertMap(LevelHandler.MapUrl);
             CommandBar.ForEach(x => FinalScreen.Add(x));
             StatAndGameArea.ForEach(x => FinalScreen.Add(x));
         }
         public void Screen()
         {
+            Console.SetWindowSize(SCREENWIDTH + 1, SCREENHEIGHT + 1);
             Assembly();
             FinalScreen.ForEach(x => Console.WriteLine(x));
         }
