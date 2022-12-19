@@ -31,8 +31,8 @@ namespace TheLostVillage
                     display.OwnedItems = player.Inventory;
                     display.LevelHandler = actionHandler.levels[i];
                     display.Screen(false);
+                    actionHandler.UserInput(i, display,player);
 
-                    actionHandler.UserInput(i, display);
                 }
             }
             Console.ReadKey();

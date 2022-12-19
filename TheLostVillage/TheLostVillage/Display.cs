@@ -22,7 +22,7 @@ namespace TheLostVillage
 
 
         public LevelHandler LevelHandler { get; set; }
-        private string[] AviableCommands { get; set; }
+        public string[] AviableCommands { get; set; }
         public List<Item> OwnedItems { get; set; }
         public string[] Stats { get; set; }
 

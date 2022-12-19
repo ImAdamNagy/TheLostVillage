@@ -1,5 +1,6 @@
-Hut;Fight,Inventory;witch;LavaDog,150,20,10,Lavadog
-Forest;Inventory;villager;none
-MushroomHut;Inventory;mage;none
-TaskScroll;Inventory;paper;none
-DragonLyingShort;Fight;dragon;Dragon,200,30,30,DragonLyingShort
+Hut;Travel,Inventory;witch;none
+LavaDog;Fight,Inventory;lavadog;LavaDog,150,20,10,Lavadog
+Forest;Travel,Inventory;villager;none
+MushroomHut;Travel,Inventory;mage;none
+TaskScroll;Travel,Inventory;paper;none
+DragonLyingShort;Fight,Inventory;dragon;Dragon,200,30,30,DragonLyingShort

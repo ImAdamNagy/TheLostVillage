@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace TheLostVillage
 {
@@ -17,31 +18,40 @@ namespace TheLostVillage
                levels.Add(new LevelHandler(item));
             }
         }
-        public void UserInput(int level, Display display)
+        public void UserInput(int level, Display display, Player player)
         {
             Console.Write("Command:");
-            HandleInput(Console.ReadLine(), level, display);
+            HandleInput(Console.ReadLine(), level, display, player);
         }
 
-        private void HandleInput(string command, int level, Display display)
+        private void HandleInput(string command, int level, Display display, Player player)
         {
             if (levels[level].Commands.Contains(command))
             {
-                switch (command)
+                while (command != "Travel")
                 {
-                    case "Inventory":
-                        display.LevelHandler.Commands = new string[] { "Press a key to exit inventory" };
-                        display.Screen(true);
-                        Console.ReadKey();
-                        break;
-                    default:
-                        break;
+                    switch (command)
+                    {
+                        case "Inventory":
+                            string[] savedcommands = display.AviableCommands;
+                            display.LevelHandler.Commands = new string[] { "Press a key to exit inventory" };
+                            display.Screen(true);
+                            Console.ReadKey();
+                            display.LevelHandler.Commands = savedcommands;
+                            display.Screen(false);
+                            UserInput(level, display, player);
+                            break;
+                        case "Fight":
+                            Battle Fight = new Battle(player, display.LevelHandler.Enemy);
+                            Fight.Fight(display);
+                            break;
+                    }
                 }
             }
             else
             {
                 Console.WriteLine("Incorrect command, please check the avaible commands above.");
-                UserInput(level, display);
+                UserInput(level, display,player);
             }
 
             Console.WriteLine();

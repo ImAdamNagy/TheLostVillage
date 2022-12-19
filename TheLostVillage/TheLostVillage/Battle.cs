@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,15 +39,20 @@ namespace TheLostVillage
             }
             commands = c.ToArray();
         }
-        public void Fight()
+        public void Fight(Display display)
         {
+            string[] savedcommands = display.AviableCommands;
             player.defending = false;
             enemy.defending = currentTurn % 3 == 0 ? true : false;
+            display.LevelHandler.Commands = commands;
+            display.Screen(false);
             PlayerTurn();
             EnemyTurn();
             
             if (Over) {
+                display.LevelHandler.Commands = savedcommands;
                 Finish();
+
             } 
             else {
                 ++currentTurn;
@@ -58,7 +64,8 @@ namespace TheLostVillage
             bool valid = false;
             do
             {
-                Console.Write("What will you do? ");
+                
+                Console.Write("What will you do?: ");
                 switch (Console.ReadLine().ToUpper())
                 {
                     case "A":

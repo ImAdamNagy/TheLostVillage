@@ -27,7 +27,7 @@ namespace TheLostVillage
         {
             Name = name;
             Level = 1;
-            MaxHealth = 15;
+            MaxHealth = 150;
             Health = MaxHealth;
             Strength = 4;
             Armor = 1;
