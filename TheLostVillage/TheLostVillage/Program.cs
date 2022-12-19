@@ -9,7 +9,7 @@ namespace TheLostVillage
 {
     internal class Program
     {
-        static Player player = new Player("nAdam");
+        static Player player = new Player("Flick");
         static Display display = new Display();
         static Minigame minigame = new Minigame();
         static ActionHandler actionHandler = new ActionHandler();

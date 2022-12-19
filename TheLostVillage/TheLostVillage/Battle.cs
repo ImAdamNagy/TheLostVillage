@@ -63,16 +63,19 @@ namespace TheLostVillage
             }
         }
         private void PlayerTurn()
-        { 
+        {
+            bool valid = false;
+            do
+            {
                 Console.Write("What will you do?: ");
                 switch (Console.ReadLine().ToUpper())
                 {
                     case "A":
-                        player.Attack(enemy);
+                        player.Attack(enemy); valid = true;
                         Console.WriteLine("You attack the {0}! {0} has {1} health left.", enemy.Name, enemy.Health);
                         break;
                     case "D":
-                        player.defending = true;
+                        player.defending = true; valid = true;
                         Console.WriteLine("You defend against {0}'s attacks.", enemy.Name);
                         break;
                     case "P":
@@ -82,13 +85,13 @@ namespace TheLostVillage
                         }
                         else
                         {
-                            player.UsePotion();
+                            player.UsePotion(); valid = true;
                             Console.WriteLine("You use a potion and heal up. You have {0} health left!", player.Health);
                         }
                         break;
                     case "U":
                         {
-                            player.Strength = 9999;
+                            player.Strength = 9999; valid = true;
                             Console.WriteLine("You have used the scroll, it gives you super strength!");
                         }
                         break;
@@ -96,6 +99,7 @@ namespace TheLostVillage
                         Console.WriteLine("There is no option like that!");
                         break;
                 }
+            }while(!valid);
         }
         private void EnemyTurn()
         {

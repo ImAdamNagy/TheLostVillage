@@ -4,3 +4,4 @@ Forest;Travel,Inventory,Give_Talisman;villager;none
 MushroomHut;Travel,Inventory;mage;none
 TaskScroll;Travel,Inventory;paper;none
 DragonLyingShort;Fight,Inventory;dragon;Dragon,200,30,30,DragonLyingShort
+GameQuit;Exit;end;none
