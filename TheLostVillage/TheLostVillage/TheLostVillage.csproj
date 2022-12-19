@@ -87,7 +87,9 @@
     <Content Include="Art\Hut.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Art\Items\Scroll.txt" />
+    <Content Include="Art\Scroll.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Art\Items\TaskScroll.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -1,6 +1,6 @@
 Hut;Travel,Inventory;witch;none
-LavaDog;Fight,Inventory;lavadog;LavaDog,150,20,10,Lavadog
-Forest;Travel,Inventory;villager;none
+LavaDog;Fight,Inventory;lavadog;LavaDog,40,20,10,Lavadog
+Forest;Travel,Inventory,Give_Talisman;villager;none
 MushroomHut;Travel,Inventory;mage;none
 TaskScroll;Travel,Inventory;paper;none
 DragonLyingShort;Fight,Inventory;dragon;Dragon,200,30,30,DragonLyingShort

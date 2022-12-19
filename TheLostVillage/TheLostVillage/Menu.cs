@@ -86,8 +86,8 @@ namespace TheLostVillage
         {
             Display center = new Display();
             Console.Clear();
-            string gameInfo = "\n\n\nYou wake up in the Witch's hut and the witch gives you a list of tasks.\nYou have Five Days to find The Lost Village where people will be able to help the Hungarians Defeat the Turks.\n On the list you can find step by step what you have to do and where to go...";
-            string credits = "\n\n\nThis game was made by \n Kinga Kiss \n Péter Dobronay \n Donát Dénes \n Ferenc Török \n Adam Nagy";
+            string gameInfo = "You wake up in the Witch's hut and the witch gives you a list of tasks.\nYou have Five Days to find The Lost Village where people will be able to help the Hungarians Defeat the Turks.\n On the list you can find step by step what you have to do and where to go...\n";
+            string credits = "This game was made by \n Kinga Kiss \n Péter Dobronay \n Donát Dénes \n Ferenc Török \n Adam Nagy";
             foreach (var item in gameInfo.Split('\n'))
             {
                 Console.WriteLine("\n" + center.AlignCenter(item));

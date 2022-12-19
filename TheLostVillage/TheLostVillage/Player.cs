@@ -29,7 +29,7 @@ namespace TheLostVillage
             Level = 1;
             MaxHealth = 150;
             Health = MaxHealth;
-            Strength = 4;
+            Strength = 10;
             Armor = 1;
             Inventory = new List<Item>();
             Potions = new Item("potion;5;true;0;0;500");

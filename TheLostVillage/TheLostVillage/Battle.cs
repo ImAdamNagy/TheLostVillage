@@ -37,6 +37,8 @@ namespace TheLostVillage
             {
                 c.Add($"Potion(P)({player.Potions.Count} left)");
             }
+            if (enemy.Name == "Dragon")
+                c.Add("Use_Scroll(U)");
             commands = c.ToArray();
         }
         public void Fight(Display display)
@@ -45,10 +47,11 @@ namespace TheLostVillage
             player.defending = false;
             enemy.defending = currentTurn % 3 == 0 ? true : false;
             display.LevelHandler.Commands = commands;
+            display.Stats = player.stats;
             display.Screen(false);
             PlayerTurn();
             EnemyTurn();
-            
+
             if (Over) {
                 display.LevelHandler.Commands = savedcommands;
                 Finish();
@@ -60,20 +63,16 @@ namespace TheLostVillage
             }
         }
         private void PlayerTurn()
-        {
-            bool valid = false;
-            do
-            {
-                
+        { 
                 Console.Write("What will you do?: ");
                 switch (Console.ReadLine().ToUpper())
                 {
                     case "A":
-                        player.Attack(enemy); valid = true;
+                        player.Attack(enemy);
                         Console.WriteLine("You attack the {0}! {0} has {1} health left.", enemy.Name, enemy.Health);
                         break;
                     case "D":
-                        player.defending = true; valid = true;
+                        player.defending = true;
                         Console.WriteLine("You defend against {0}'s attacks.", enemy.Name);
                         break;
                     case "P":
@@ -83,15 +82,20 @@ namespace TheLostVillage
                         }
                         else
                         {
-                            player.UsePotion(); valid = true;
+                            player.UsePotion();
                             Console.WriteLine("You use a potion and heal up. You have {0} health left!", player.Health);
+                        }
+                        break;
+                    case "U":
+                        {
+                            player.Strength = 9999;
+                            Console.WriteLine("You have used the scroll, it gives you super strength!");
                         }
                         break;
                     default:
                         Console.WriteLine("There is no option like that!");
                         break;
                 }
-            } while (!valid);
         }
         private void EnemyTurn()
         {
@@ -99,6 +103,7 @@ namespace TheLostVillage
             {
                 enemy.Attack(player);
                 Console.WriteLine("{0} attacks you! You have {1} health left.", enemy.Name, player.Health);
+                Console.WriteLine("Press a key for the next round...");
             }
             else
             {

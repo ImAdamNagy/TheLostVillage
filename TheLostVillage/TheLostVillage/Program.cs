@@ -19,6 +19,7 @@ namespace TheLostVillage
             game.Run();
             for (int i = 0; i < actionHandler.levels.Count; i++)
             {
+
                 if (i == 3)
                 {
                     Console.Clear();
@@ -31,6 +32,7 @@ namespace TheLostVillage
                     display.OwnedItems = player.Inventory;
                     display.LevelHandler = actionHandler.levels[i];
                     display.Screen(false);
+                    Story.WriteStory(actionHandler.levels[i].DialogeUrl);
                     actionHandler.UserInput(i, display,player);
 
                 }

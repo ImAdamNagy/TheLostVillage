@@ -177,7 +177,6 @@ namespace TheLostVillage
             {
                 Assembly();
                 FinalScreen.ForEach(x => Console.WriteLine(x));
-                Story.WriteStory(LevelHandler.DialogeUrl);
             }                   
         }       
     }

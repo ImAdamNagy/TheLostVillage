@@ -30,21 +30,33 @@ namespace TheLostVillage
             {
                 while (command != "Travel")
                 {
-                    switch (command)
+                    if (command == "Inventory")
                     {
-                        case "Inventory":
-                            string[] savedcommands = display.AviableCommands;
-                            display.LevelHandler.Commands = new string[] { "Press a key to exit inventory" };
-                            display.Screen(true);
-                            Console.ReadKey();
-                            display.LevelHandler.Commands = savedcommands;
-                            display.Screen(false);
-                            UserInput(level, display, player);
-                            break;
-                        case "Fight":
-                            Battle Fight = new Battle(player, display.LevelHandler.Enemy);
+                        string[] savedcommands = display.AviableCommands;
+                        display.LevelHandler.Commands = new string[] { "Press a key to exit inventory" };
+                        display.Screen(true);
+                        Console.ReadKey();
+                        display.LevelHandler.Commands = savedcommands;
+                        display.Screen(false);
+                        UserInput(level, display, player);
+                        break;
+                    }                                                      
+                    else if (command == "Fight")
+                    {
+                        Enemy enemy = display.LevelHandler.Enemy;
+                        Battle Fight = new Battle(player, enemy);
+                        while (!Fight.Over)
+                        {
                             Fight.Fight(display);
-                            break;
+                            Console.ReadKey();
+                        }
+                        break;
+                    }
+                    else if(command=="Give_Talisman")
+                    {
+                        player.Inventory.RemoveAt(player.Inventory.Count-1);
+                        player.Inventory.Add(new Item("Scroll;1;True;9999;0;9999"));
+                        break;
                     }
                 }
             }

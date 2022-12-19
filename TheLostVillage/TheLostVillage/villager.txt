@@ -1,7 +1,7 @@
-Hi! I heard you have an item for me?
-Villager: I do indeed. :)
+Greetings! I heard you have an item for me.
+Villager: I do indeed. A magical scrool, that you are going to need to fight the dragon.
 Will you give it to me?
 Villager: Oh I'm not that kind. I will need something in exchange.
 And what do you want?
-Villager: YoUr sOuL
-Hell no!
+Villager: The Talisman you've just gained from killing that wild animal!
+Alright, so be it.

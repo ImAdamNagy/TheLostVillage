@@ -38,14 +38,16 @@ namespace TheLostVillage
             Name = name;
             MaxHealth = 5;
             Health = MaxHealth;
-            Strength = 2;
+            Strength = 4;
             Armor = 1;
         }
 
         private void TakeDamage(int damage)
         {
-            int defense = defending ? Armor * 2 : Armor;
-             Health -= damage - defense;
+            if (defending)
+                Health -= damage - Armor;
+            else
+                Health -= damage;
         }
 
         public void Attack(Character c)
